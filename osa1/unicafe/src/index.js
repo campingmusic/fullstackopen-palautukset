@@ -2,25 +2,46 @@ import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
+
 const Header = (props) => {
     //console.log(props)
     return (
         <h1>{props.header}</h1>
       )
 }
+const Statistic = (props) => {
+    return(
+    <p>
+        {props.text} {props.value}
+    </p>
+    )
+}
 
-const Stats = (props) => {
+const Button = (props) => {
+    return(
+      <button className = {props.class} onClick = {props.onClick}>{props.text}</button>
+ 
+    )
+}
+
+const Statistics = (props) => { 
+    if (props.good === 0 && props.neutral === 0 && props.bad === 0){
+        return(
+            <p>Yhtään palautetta ei ole vielä annettu.</p>
+        )
+
+    }
     const average = (props.good * 1 + props.neutral * 0 + props.bad * -1)/ (props.good + props.neutral + props.bad)
-     //console.log(average)
+    const positivePros = 100 * (props.good / (props.good + props.neutral + props.bad))
     return(
         <div>
-        <h1>{props.header}</h1>
-    {/*<p>Palautetta ei ole vielä annettu.</p>*/}
-        <p>:) x {props.good}</p>
-        <p>:| x {props.neutral}</p>
-        <p>:( x {props.bad}</p>
-        <p>Palaute annettu {props.good + props.neutral + props.bad} kertaa</p>
-        <p>Keskiarvo {average}<br />(kun hyvä on 1, neutraali on 0 ja huono -1)</p>
+            <h1>Tilasto:</h1>
+            <Statistic text="Hyvä:" value= {props.good} />
+            <Statistic text="Neutraali:" value = {props.neutral} />
+            <Statistic text="Huono:" value = {props.bad} />
+            <Statistic text="Yhteensä:" value = {props.good + props.neutral + props.bad} />
+            <Statistic text="Keskiarvo:" value= {average} />
+            <Statistic text="Positiivisia:" value = {positivePros + " %"} />
         </div>
     )
     
@@ -35,7 +56,6 @@ const App = () => {
     const [bad, setBad] = useState(0)
 
     const header = 'Kiitos palautteesta'
-     /*const header2 = 'Tilasto'*/
 
         /*
     const handleClick = () => {
@@ -63,12 +83,12 @@ const App = () => {
       <div>
         <Header header={header} />
 
-       <button className='button-good' onClick={increaseGoodByOne}>:)</button>
-       <button className='button-neutral'onClick={increaseNeutralByOne}>:|</button>
-       <button className='button-bad'onClick={increaseBadByOne}>:(</button>
+       <Button class='button-good' onClick={increaseGoodByOne} text=':)' />
+       <Button class='button-neutral' onClick={increaseNeutralByOne} text=':|' />
+       <Button class='button-bad' onClick={increaseBadByOne} text=':(' />
     
 
-       <Stats  bad={bad} neutral={neutral} good={good} />
+       <Statistics  bad={bad} neutral={neutral} good={good} />
       </div>
     )
   }
