@@ -11,9 +11,9 @@ const Header = (props) => {
 }
 const Statistic = (props) => {
     return(
-    <p>
-        {props.text} {props.value}
-    </p>
+    <tr>
+       <td>{props.text}</td><td>{props.value}</td>
+    </tr>
     )
 }
 
@@ -35,13 +35,17 @@ const Statistics = (props) => {
     const positivePros = 100 * (props.good / (props.good + props.neutral + props.bad))
     return(
         <div>
-            <h1>Tilasto:</h1>
-            <Statistic text="Hyvä:" value= {props.good} />
-            <Statistic text="Neutraali:" value = {props.neutral} />
-            <Statistic text="Huono:" value = {props.bad} />
-            <Statistic text="Yhteensä:" value = {props.good + props.neutral + props.bad} />
-            <Statistic text="Keskiarvo:" value= {average} />
-            <Statistic text="Positiivisia:" value = {positivePros + " %"} />
+            <table>
+                <caption>Tilasto:</caption>
+                <tbody>
+                <Statistic text="Hyvä:" value= {props.good} />
+                <Statistic text="Neutraali:" value = {props.neutral} />
+                <Statistic text="Huono:" value = {props.bad} />
+                <Statistic text="Yhteensä:" value = {props.good + props.neutral + props.bad} />
+                <Statistic text="Keskiarvo:" value= {average.toFixed(1)} />
+                <Statistic text="Positiivisia:" value = {positivePros.toFixed(0) + " %"} />
+                </tbody>
+            </table>
         </div>
     )
     
