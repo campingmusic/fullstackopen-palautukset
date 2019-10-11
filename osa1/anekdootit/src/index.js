@@ -14,21 +14,36 @@ const Button = (props) => {
 const App = (props) => {
     const [selected, setSelected] = useState(0)
 
+    const votes = [...props.anecdotes]
+    votes.fill(0)
+    console.log(votes)
+
     const nextAnecdote = () => {
         console.log('Button clicked')
         setSelected(getRandomInt(props.anecdotes.length))
-        console.log(props)
-        console.log(selected)
     }
 
     function getRandomInt(max) {
         return Math.floor(Math.random() * Math.floor(max));
       }
+
+    const voteAnecdote = () => {
+
+    
+        console.log('ääni annettu')
+        console.log(votes)
+      
+        // kasvatetaan taulukon paikan  arvoa yhdellä
+        votes[selected] ++
+        console.log(votes[selected])   
+    }
   
     return (
       <div>
         <p>{props.anecdotes[selected]}</p>
+        <p>Ääniä annettu {votes[selected]}</p>
 
+        <Button onClick={voteAnecdote} text='Tykkää' />
         <Button onClick={nextAnecdote} text='Arvo anekdootti' />
       </div>
 
