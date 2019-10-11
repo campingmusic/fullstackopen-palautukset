@@ -7,4 +7,4 @@
 # [Osa 1](https://github.com/campingmusic/fullstackopen-palautukset/tree/master/osa1)
   * [Kurssitiedot](https://github.com/campingmusic/fullstackopen-palautukset/tree/master/osa1/kurssitiedot)
   * [Unicafe](https://github.com/campingmusic/fullstackopen-palautukset/tree/master/osa1/unicafe)
-  * Anekdootit
+  * [Anekdootit](https://github.com/campingmusic/fullstackopen-palautukset/tree/master/osa1/anekdootit)
