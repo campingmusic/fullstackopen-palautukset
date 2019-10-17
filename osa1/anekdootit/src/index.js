@@ -3,6 +3,12 @@ import ReactDOM from 'react-dom'
 import './index.css';
 
 
+const Statistic = (props) => {
+  return(
+  <p>{props.text} {props.aanet}</p>
+  )
+}
+
 const Button = (props) => {
     return(
       <button className = {props.class} onClick = {props.onClick}>{props.text}</button>
@@ -13,9 +19,12 @@ const Button = (props) => {
 
 const App = (props) => {
     const [selected, setSelected] = useState(0)
+    const [value, setValue] = useState(0)
 
+    //taulukosta saman kokoinen kuin anecdotes
     const votes = [...props.anecdotes]
-    votes.fill(0)
+    //täytetään se nollilla
+    votes.fill(value)
     console.log(votes)
 
     const nextAnecdote = () => {
@@ -29,19 +38,19 @@ const App = (props) => {
 
     const voteAnecdote = () => {
 
-    
         console.log('ääni annettu')
-        console.log(votes)
-      
-        // kasvatetaan taulukon paikan  arvoa yhdellä
-        votes[selected] ++
-        console.log(votes[selected])   
+        // taulukon paikka vastaamaan anekdoottia ja kasvatetaan yhdellä
+        setValue(votes[value] += 1)
+        console.log('paikat: '+ votes)
+        console.log('paikka on: '+ selected)    
+        console.log('arvo on  ' + votes[selected])   
     }
   
     return (
       <div>
         <p>{props.anecdotes[selected]}</p>
-        <p>Ääniä annettu {votes[selected]}</p>
+        <Statistic text="Ääniä:" aanet= {votes[selected]} />
+        {console.log('ääni annettu' + votes[value])}
 
         <Button onClick={voteAnecdote} text='Tykkää' />
         <Button onClick={nextAnecdote} text='Arvo anekdootti' />
