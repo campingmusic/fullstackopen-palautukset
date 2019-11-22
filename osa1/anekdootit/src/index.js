@@ -5,7 +5,7 @@ import './index.css';
 
 const Statistic = (props) => {
   return(
-  <p>{props.text} {props.aanet}</p>
+  <p  className="info">Tästä anekdootista on tykätty {props.aanet} kertaa</p>
   )
 }
 
@@ -19,41 +19,56 @@ const Button = (props) => {
 
 const App = (props) => {
     const [selected, setSelected] = useState(0)
-    const [value, setValue] = useState(0)
 
-    //taulukosta saman kokoinen kuin anecdotes
-    const votes = [...props.anecdotes]
+
+    //saman kokoinen taulukko kuin anecdotes
+    const copy = [...props.anecdotes]
     //täytetään se nollilla
-    votes.fill(value)
-    console.log(votes)
+    copy.fill(0)
+    console.log(copy)
+
+    const [votes, setVotes] = useState(copy)
 
     const nextAnecdote = () => {
-        console.log('Button clicked')
         setSelected(getRandomInt(props.anecdotes.length))
     }
 
     function getRandomInt(max) {
         return Math.floor(Math.random() * Math.floor(max));
-      }
+    }
 
     const voteAnecdote = () => {
 
+        const copyvotes = [...votes]
+    
+        console.log(copyvotes)
+
+        copyvotes[selected] +=1
+        console.log(copyvotes)
+
         console.log('ääni annettu')
-        // taulukon paikka vastaamaan anekdoottia ja kasvatetaan yhdellä
-        setValue(votes[value] += 1)
-        console.log('paikat: '+ votes)
+    
+        setVotes(copyvotes)
+        
         console.log('paikka on: '+ selected)    
-        console.log('arvo on  ' + votes[selected])   
+        console.log('arvo on  ' + copyvotes[selected])   
     }
+
+    const mostLiked = votes.indexOf(Math.max(...votes))
+    
   
     return (
       <div>
+        <h1>Päivän anekdootti</h1>
         <p>{props.anecdotes[selected]}</p>
-        <Statistic text="Ääniä:" aanet= {votes[selected]} />
-        {console.log('ääni annettu' + votes[value])}
+        <Statistic aanet= {votes[selected]} />
+        <Button onClick={voteAnecdote} text='Tykkää' /><Button onClick={nextAnecdote} text='Seuraava anekdootti' />
+        <h1>Tykätyin anekdootti</h1>
+        <p>{props.anecdotes[mostLiked]}</p>
+        <Statistic aanet= {votes[mostLiked]} />
 
-        <Button onClick={voteAnecdote} text='Tykkää' />
-        <Button onClick={nextAnecdote} text='Arvo anekdootti' />
+        
+
       </div>
 
     )
