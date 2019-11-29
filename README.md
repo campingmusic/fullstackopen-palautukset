@@ -8,6 +8,5 @@
   * [Kurssitiedot](https://github.com/campingmusic/fullstackopen-palautukset/tree/master/osa1/kurssitiedot)
   * [Unicafe](https://github.com/campingmusic/fullstackopen-palautukset/tree/master/osa1/unicafe)
   * [Anekdootit](https://github.com/campingmusic/fullstackopen-palautukset/tree/master/osa1/anekdootit)
-# [Osa 2] (https://github.com/campingmusic/fullstackopen-palautukset/tree/master/osa2)
-  * [Kurssitiedot] (https://github.com/campingmusic/fullstackopen-palautukset/tree/master/osa2/kurssitiedot)
-  * [Unicafe](https://github.com/campingmusic/fullstackopen-palautukset/tree/master/osa1/unicafe)
+# [Osa 2](https://github.com/campingmusic/fullstackopen-palautukset/tree/master/osa2)
+  * [Kurssitiedot](https://github.com/campingmusic/fullstackopen-palautukset/tree/master/osa2/kurssitiedot)
